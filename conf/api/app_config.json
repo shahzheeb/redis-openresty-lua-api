@@ -1,0 +1,17 @@
+{
+  "app_info":{
+    "app_name": "account_manager",
+    "app_organization": "Nginx Inc."
+  },
+  "app_level": {
+    "log_level": "debug",
+    "shared_cache_enabled": true,
+    "redis_cache_enabled": true,
+    "account_creation_enabled": true
+  },
+  "redis":{
+    "log_level": "debug",
+    "host": "localhost",
+    "port": "6379"
+  }
+}
