@@ -6,7 +6,7 @@
 -- To change this template use File | Settings | File Templates.
 --
 
-local logger = require("logger")
+local logger = require("logger"):new()
 local utils = require("utils")
 
 print ("Entering app_initializer ...")
