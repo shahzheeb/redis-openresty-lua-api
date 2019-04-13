@@ -6,6 +6,7 @@
 -- To change this template use File | Settings | File Templates.
 --
 local log = require("logger"):new()
+local cjson = require("cjson.safe")
 
 local _M = {
     _VERSION = "1.0"
@@ -25,5 +26,22 @@ function _M.read_file(file_name)
     return data, err
 end
 
+function _M.json_to_table(json_file)
+    return cjson.decode(json_file)
+
+end
+
+function _M.is_null_empty(val)
+    if val and val ~= ngx.null then
+        if(type(val) == "string" and #val == 0) then
+            return true
+        elseif(type(val) == "table" and next(val) == nil) then
+            return true
+        end
+
+    else
+        return true
+    end
+end
 
 return _M
