@@ -5,7 +5,7 @@
 -- Time: 00:40
 -- To change this template use File | Settings | File Templates.
 --
-local log = require("logger"):new()
+local logger = require("logger"):new()
 local cjson = require("cjson.safe")
 
 local _M = {
@@ -16,11 +16,11 @@ local _M = {
 function _M.read_file(file_name)
     local file, err = io.open(file_name)
     if not file then
-        log:error("Failed to open", file_name, ": with error: ", err)
+        logger:error("Failed to open", file_name, ": with error: ", err)
         return nil, err
     end
 
-    log:info("File opened successfully")
+    logger:info("File opened successfully")
     local data, err = file:read("*a")
     file:close()
     return data, err
@@ -42,6 +42,19 @@ function _M.is_null_empty(val)
     else
         return true
     end
+end
+
+function _M.get_timestamp()
+    local timestamp = ngx.now()
+    local date = ngx.localtime()
+    local match, _ = ngx.re.match(timestamp, "([.][0-9]+)")
+    local millis = ".0"
+
+    if match then
+        millis = match[1]
+    end
+
+    return date..millis
 end
 
 return _M

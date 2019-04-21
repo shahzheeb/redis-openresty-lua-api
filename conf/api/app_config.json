@@ -4,7 +4,7 @@
     "app_name": "account_manager",
     "app_organization": "Nginx Inc."
   },
-  "app_level": {
+  "accounts_api": {
     "log_level": "debug",
     "account_creation_enabled":true
   },
