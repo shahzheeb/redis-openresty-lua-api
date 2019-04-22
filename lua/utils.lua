@@ -31,6 +31,11 @@ function _M.json_to_table(json_file)
 
 end
 
+function _M.table_to_json(tbl)
+    return cjson.encode(tbl)
+
+end
+
 function _M.is_null_empty(val)
     if val and val ~= ngx.null then
         if(type(val) == "string" and #val == 0) then

@@ -33,7 +33,7 @@ function _M.init(app_config_file_name)
     end
 
     -- Initializing logger
-    logger:set_log_level(config.app_level.log_level)
+    logger:set_log_level(config.accounts_api.log_level)
     logger:notice("Logger initialized successfully")
 
     -- Initializing account_info_cache
@@ -44,13 +44,12 @@ function _M.init(app_config_file_name)
     --logger:debug("Value from cache : ",value)
 
     -- Initializing router
-
-
+    request_router.init(config.accounts_api)
     return true
 end
 
 function _M.process_account_requests()
-    logger:notice("processing account request")
+    logger:debug("processing account request")
     request_router.execute()
 
 end
